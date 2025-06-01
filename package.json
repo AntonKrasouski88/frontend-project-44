@@ -1,0 +1,19 @@
+{
+  "name": "frontend-project-44",
+  "version": "1.0.0",
+  "description": "The Intellectual Games Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonKrasouski88/frontend-project-44.git"
+  },
+  "author": "Anton Krasovski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonKrasouski88/frontend-project-44/issues"
+  },
+  "homepage": "https://github.com/AntonKrasouski88/frontend-project-44#readme"
+}
