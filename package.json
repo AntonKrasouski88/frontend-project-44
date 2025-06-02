@@ -1,5 +1,5 @@
 {
-  "name": "frontend-project-44",
+  "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "The Intellectual Games Project",
   "main": "index.js",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AntonKrasouski88/frontend-project-44/issues"
   },
-  "homepage": "https://github.com/AntonKrasouski88/frontend-project-44#readme"
+  "homepage": "https://github.com/AntonKrasouski88/frontend-project-44#readme",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  }
 }
