@@ -4,7 +4,7 @@ const showGameGreeting = () => {
   console.log("Welcome to the Brain Games");
 };
 
-const geetNameUser = () => {
+const getNameUser = () => {
   return readlineSync.question("May I have your name? ");
 };
 
@@ -50,7 +50,7 @@ const startGameEvenNumber = () => {
 };
 
 showGameGreeting();
-const nameUser = geetNameUser();
+const nameUser = getNameUser();
 greetUser(nameUser);
 const resultGame = startGameEvenNumber();
 if (resultGame) {
