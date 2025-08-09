@@ -1,16 +1,6 @@
 import readlineSync from "readline-sync";
-
-const showGameGreeting = () => {
-  console.log("Welcome to the Brain Games");
-};
-
-const getNameUser = () => {
-  return readlineSync.question("May I have your name? ");
-};
-
-const greetUser = (name) => {
-  console.log(`Hello, ${name}!`);
-};
+import { showGameGreeting } from "./brain-games.js";
+import { getNameUser } from "./brain-games.js";
 
 const getRandomNumber = (start, end) => {
   const randomNumber = Math.floor(Math.random() * (end - start + 1) + start);
@@ -54,7 +44,6 @@ const startGameEvenNumber = () => {
 
 showGameGreeting();
 const nameUser = getNameUser();
-greetUser(nameUser);
 const resultGame = startGameEvenNumber();
 if (resultGame) {
   console.log(`Congratulations, ${nameUser}!`);
