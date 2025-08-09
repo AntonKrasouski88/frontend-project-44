@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import readlineSync from "readline-sync";
 import {
   getRandomNumber,
@@ -11,7 +12,13 @@ const isEvenNumber = (num) => num % 2 === 0;
 const getAnswerUser = (num) => {
   console.log("Answer 'yes' if the number is even, otherwise answer 'no'");
   console.log(`Question: ${num}`);
-  const answer = readlineSync.question("Your answer: ");
+  let answer;
+  do {
+    answer = readlineSync.question("Your answer: ");
+    if (answer !== "yes" || answer !== "no") {
+      console.log("Please answer with 'yes' or 'no'");
+    }
+  } while (answer !== "yes" && answer !== "no");
   return answer === "yes" ? true : false;
 };
 
