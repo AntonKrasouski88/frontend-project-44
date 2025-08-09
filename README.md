@@ -5,3 +5,7 @@
 ### SonareQude analysis:
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=AntonKrasouski88_frontend-project-44&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=AntonKrasouski88_frontend-project-44)
+
+### Asciinema:
+
+[![asciicast](https://asciinema.org/a/dPm98EpPM1s3W0URudmwAElkP.svg)](https://asciinema.org/a/dPm98EpPM1s3W0URudmwAElkP)
