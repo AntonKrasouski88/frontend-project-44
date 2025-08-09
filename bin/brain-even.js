@@ -31,10 +31,12 @@ const isCorrectAnswer = (answer, even) => {
 };
 
 const startGameEvenNumber = () => {
+  const startRange = 1;
+  const endRange = 100;
   let flag = true;
 
   for (let i = 0; i < 3; i += 1) {
-    const randomNumber = getRandomNumber(1, 100);
+    const randomNumber = getRandomNumber(startRange, endRange);
     const answerUser = getAnswerUser(randomNumber);
     const evenNumber = isEvenNumber(randomNumber);
     const correctAnswer = isCorrectAnswer(answerUser, evenNumber);
