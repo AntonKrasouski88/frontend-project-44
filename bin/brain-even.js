@@ -13,7 +13,8 @@ const greetUser = (name) => {
 };
 
 const getRandomNumber = (start, end) => {
-  return Math.floor(Math.random() * (end - start + 1) + start);
+  const randomNumber = Math.floor(Math.random() * (end - start + 1) + start);
+  return randomNumber;
 };
 
 const isEvenNumber = (num) => num % 2 === 0;
