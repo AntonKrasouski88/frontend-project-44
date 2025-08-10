@@ -10,7 +10,7 @@ import {
 const isEvenNumber = (num) => num % 2 === 0;
 
 const getAnswerUser = (num) => {
-  console.log("Answer 'yes' if the number is even, otherwise answer 'no'.");
+  console.log(`Answer "yes" if the number is even, otherwise answer "no".`);
   console.log(`Question: ${num}`);
   let answer;
   do {
