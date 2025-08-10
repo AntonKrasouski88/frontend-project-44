@@ -51,8 +51,6 @@ const startGameNod = () => {
     const firstNumber = getRandomNumber(startRange, endRange);
     const secondNumber = getRandomNumber(startRange, endRange);
     const listDivisorsFirstNum = getListDivisors(firstNumber);
-    console.log(listDivisorsFirstNum);
-
     const listDivisorsSecondNum = getListDivisors(secondNumber);
     const minDivisor = getMinDivisors(
       listDivisorsFirstNum,
