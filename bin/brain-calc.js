@@ -28,6 +28,7 @@ const calculateNumbers = (firstNumber, secondNumber, symbol) => {
 };
 
 const getAnswer = (firstNumber, secondNumber, symbol) => {
+  console.log("What is the result of the expression?");
   console.log(`Question: ${firstNumber} ${symbol} ${secondNumber}`);
   const answer = readlineSync.question("Your answer: ");
   return Number(answer);
@@ -49,6 +50,9 @@ const startGameCalculate = () => {
     if (correctAnswer) {
       console.log("Correct!");
     } else {
+      console.log(
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${answerRight}'.`
+      );
       flag = false;
       break;
     }

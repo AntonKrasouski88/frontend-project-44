@@ -61,6 +61,9 @@ const startGameNod = () => {
     if (correctAnswer) {
       console.log("Correct!");
     } else {
+      console.log(
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${minDivisor}'.`
+      );
       flag = false;
       break;
     }

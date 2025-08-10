@@ -25,13 +25,13 @@ const isPrime = (num) => {
 };
 
 const getAnswerUser = (num) => {
-  console.log("Answer 'yes' if the number is even, otherwise answer 'no'");
+  console.log(`Answer "yes" if given number is prime. Otherwise answer "no".`);
   console.log(`Question: ${num}`);
   let answer;
   do {
     answer = readlineSync.question("Your answer: ");
     if (answer !== "yes" || answer !== "no") {
-      console.log("Please answer with 'yes' or 'no'");
+      console.log("Please answer with 'yes' or 'no'.");
     }
   } while (answer !== "yes" && answer !== "no");
   return answer === "yes" ? true : false;
@@ -50,6 +50,11 @@ const startGamePrime = () => {
     if (result) {
       console.log("Correct!");
     } else {
+      console.log(
+        `'${answerUser}' is wrong answer ;(. Correct answer was '${
+          answerRight ? "yes" : "no"
+        }'.`
+      );
       flag = false;
       break;
     }

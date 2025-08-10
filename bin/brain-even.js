@@ -10,7 +10,7 @@ import {
 const isEvenNumber = (num) => num % 2 === 0;
 
 const getAnswerUser = (num) => {
-  console.log("Answer 'yes' if the number is even, otherwise answer 'no'");
+  console.log("Answer 'yes' if the number is even, otherwise answer 'no'.");
   console.log(`Question: ${num}`);
   let answer;
   do {
@@ -36,6 +36,11 @@ const startGameEvenNumber = () => {
     if (correctAnswer) {
       console.log("Correct!");
     } else {
+      console.log(
+        `'${answerUser}' is wrong answer ;(. Correct answer was '${
+          evenNumber ? "yes" : "no"
+        }'.`
+      );
       flag = false;
       break;
     }

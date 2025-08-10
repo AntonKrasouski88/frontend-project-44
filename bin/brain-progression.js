@@ -58,6 +58,9 @@ const startGameProgression = () => {
     if (correctAnswer) {
       console.log("Correct!");
     } else {
+      console.log(
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${progressionNumbers[positionHideElem]}'.`
+      );
       flag = false;
       break;
     }
