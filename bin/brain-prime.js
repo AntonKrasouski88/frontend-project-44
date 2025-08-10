@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+import readlineSync from "readline-sync";
+import {
+  showGameGreeting,
+  getNameUser,
+  getRandomNumber,
+  isCorrectAnswer,
+} from "./utils.js";
+
+const isPrime = (num) => {
+  if (num === 2) {
+    return true;
+  }
+  if (num < 2 || num % 2 === 0) {
+    return false;
+  }
+
+  for (let i = 2; i < Math.sqrt(num); i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+const getAnswerUser = (num) => {
+  console.log("Answer 'yes' if the number is even, otherwise answer 'no'");
+  console.log(`Question: ${num}`);
+  let answer;
+  do {
+    answer = readlineSync.question("Your answer: ");
+    if (answer !== "yes" || answer !== "no") {
+      console.log("Please answer with 'yes' or 'no'");
+    }
+  } while (answer !== "yes" && answer !== "no");
+  return answer === "yes" ? true : false;
+};
+
+const startGamePrime = () => {
+  const startRange = 1;
+  const endRange = 100;
+  let flag = true;
+
+  for (let i = 0; i < 3; i += 1) {
+    const number = getRandomNumber(startRange, endRange);
+    const answerRight = isPrime(number);
+    const answerUser = getAnswerUser(number);
+    const result = isCorrectAnswer(answerRight, answerUser);
+    if (result) {
+      console.log("Correct!");
+    } else {
+      flag = false;
+      break;
+    }
+  }
+
+  return flag;
+};
+
+showGameGreeting();
+const nameUser = getNameUser();
+const resultGame = startGamePrime();
+if (resultGame) {
+  console.log(`Congratulations, ${nameUser}!`);
+} else {
+  console.log(`Let's try again, ${nameUser}!`);
+}
