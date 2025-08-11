@@ -34,7 +34,7 @@ const getAnswerUser = (num) => {
       console.log("Please answer with 'yes' or 'no'.");
     }
   } while (answer !== 'yes' && answer !== 'no');
-  return answer === 'yes';
+  return answer;
 };
 
 const startGamePrime = () => {
@@ -46,7 +46,7 @@ const startGamePrime = () => {
     const number = getRandomNumber(startRange, endRange);
     const answerRight = isPrime(number);
     const answerUser = getAnswerUser(number);
-    const result = isCorrectAnswer(answerRight, answerUser);
+    const result = isCorrectAnswer(answerRight, answerUser === 'yes');
     if (result) {
       console.log('Correct!');
     } else {
