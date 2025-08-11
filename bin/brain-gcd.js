@@ -1,22 +1,24 @@
 #!/usr/bin/env node
-import readlineSync from "readline-sync";
+import readlineSync from 'readline-sync';
 import {
   showGameGreeting,
   getNameUser,
   getRandomNumber,
   isCorrectAnswer,
-} from "./utils.js";
+} from './utils.js';
 
 const getListDivisors = (num) => {
   const arrDivisors = [num];
   for (let i = 1; i < Math.ceil(num / 2); i += 1) {
-    num % i === 0 && arrDivisors.push(i);
+    if (num % i === 0) {
+      arrDivisors.push(i);
+    }
   }
   return arrDivisors;
 };
 
 const getMinDivisors = (arrDivisors1, arrDivisors2) => {
-  let divisors = arrDivisors1.reduce((acc, divisor) => {
+  const divisors = arrDivisors1.reduce((acc, divisor) => {
     if (arrDivisors2.includes(divisor) && divisor !== 1) {
       acc.push(divisor);
     }
@@ -30,13 +32,13 @@ const getMinDivisors = (arrDivisors1, arrDivisors2) => {
 };
 
 const getAnswerUser = (num1, num2) => {
-  console.log("Find the greatest common divisor of given numbers.");
+  console.log('Find the greatest common divisor of given numbers.');
   console.log(`Question: ${num1} ${num2}`);
   let answer;
   do {
-    answer = readlineSync.question("Your answer: ");
+    answer = readlineSync.question('Your answer: ');
     if (answer.length === 0 || Number.isNaN(Number(answer))) {
-      console.log("Please answer with a number");
+      console.log('Please answer with a number');
     }
   } while (answer.length === 0 || Number.isNaN(Number(answer)));
   return Number(answer);
@@ -54,15 +56,15 @@ const startGameNod = () => {
     const listDivisorsSecondNum = getListDivisors(secondNumber);
     const minDivisor = getMinDivisors(
       listDivisorsFirstNum,
-      listDivisorsSecondNum
+      listDivisorsSecondNum,
     );
     const userAnswer = getAnswerUser(firstNumber, secondNumber);
     const correctAnswer = isCorrectAnswer(userAnswer, minDivisor);
     if (correctAnswer) {
-      console.log("Correct!");
+      console.log('Correct!');
     } else {
       console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${minDivisor}'.`
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${minDivisor}'.`,
       );
       flag = false;
       break;

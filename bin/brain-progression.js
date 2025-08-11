@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import readlineSync from "readline-sync";
+import readlineSync from 'readline-sync';
 import {
   showGameGreeting,
   getNameUser,
   getRandomNumber,
   isCorrectAnswer,
-} from "./utils.js";
+} from './utils.js';
 
 const getProgression = (startNum, step, length) => {
   const arrNumbers = [];
@@ -19,19 +19,19 @@ const getProgression = (startNum, step, length) => {
 
 const hideNumber = (arrNum, position) => {
   const copyArr = [...arrNum];
-  copyArr[position] = "..";
+  copyArr[position] = '..';
   return copyArr;
 };
 
 const getAnswerUser = (arrNum, position) => {
   const progression = hideNumber(arrNum, position);
-  console.log("What number is missing in the progression?");
-  console.log(`Question: ${progression.join(" ")}`);
+  console.log('What number is missing in the progression?');
+  console.log(`Question: ${progression.join(' ')}`);
   let answer;
   do {
-    answer = readlineSync.question("Your answer: ");
+    answer = readlineSync.question('Your answer: ');
     if (answer.length === 0 || Number.isNaN(Number(answer))) {
-      console.log("Please answer with a number");
+      console.log('Please answer with a number');
     }
   } while (answer.length === 0 || Number.isNaN(Number(answer)));
   return Number(answer);
@@ -48,18 +48,18 @@ const startGameProgression = () => {
     const progressionNumbers = getProgression(
       startNumber,
       step,
-      progressionLength
+      progressionLength,
     );
     const userAnswer = getAnswerUser(progressionNumbers, positionHideElem);
     const correctAnswer = isCorrectAnswer(
       userAnswer,
-      progressionNumbers[positionHideElem]
+      progressionNumbers[positionHideElem],
     );
     if (correctAnswer) {
-      console.log("Correct!");
+      console.log('Correct!');
     } else {
       console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${progressionNumbers[positionHideElem]}'.`
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${progressionNumbers[positionHideElem]}'.`,
       );
       flag = false;
       break;

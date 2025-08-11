@@ -1,25 +1,25 @@
 #!/usr/bin/env node
-import readlineSync from "readline-sync";
+import readlineSync from 'readline-sync';
 import {
   getRandomNumber,
   isCorrectAnswer,
   showGameGreeting,
   getNameUser,
-} from "./utils.js";
+} from './utils.js';
 
 const isEvenNumber = (num) => num % 2 === 0;
 
 const getAnswerUser = (num) => {
-  console.log(`Answer "yes" if the number is even, otherwise answer "no".`);
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
   console.log(`Question: ${num}`);
   let answer;
   do {
-    answer = readlineSync.question("Your answer: ");
-    if (answer !== "yes" || answer !== "no") {
+    answer = readlineSync.question('Your answer: ');
+    if (answer !== 'yes' || answer !== 'no') {
       console.log("Please answer with 'yes' or 'no'");
     }
-  } while (answer !== "yes" && answer !== "no");
-  return answer === "yes" ? true : false;
+  } while (answer !== 'yes' && answer !== 'no');
+  return answer === 'yes';
 };
 
 const startGameEvenNumber = () => {
@@ -34,12 +34,12 @@ const startGameEvenNumber = () => {
     const correctAnswer = isCorrectAnswer(answerUser, evenNumber);
 
     if (correctAnswer) {
-      console.log("Correct!");
+      console.log('Correct!');
     } else {
       console.log(
         `'${answerUser}' is wrong answer ;(. Correct answer was '${
-          evenNumber ? "yes" : "no"
-        }'.`
+          evenNumber ? 'yes' : 'no'
+        }'.`,
       );
       flag = false;
       break;

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import readlineSync from "readline-sync";
+import readlineSync from 'readline-sync';
 import {
   showGameGreeting,
   getNameUser,
   getRandomNumber,
   isCorrectAnswer,
-} from "./utils.js";
+} from './utils.js';
 
 const isPrime = (num) => {
   if (num === 2) {
@@ -25,16 +25,16 @@ const isPrime = (num) => {
 };
 
 const getAnswerUser = (num) => {
-  console.log(`Answer "yes" if given number is prime. Otherwise answer "no".`);
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
   console.log(`Question: ${num}`);
   let answer;
   do {
-    answer = readlineSync.question("Your answer: ");
-    if (answer !== "yes" || answer !== "no") {
+    answer = readlineSync.question('Your answer: ');
+    if (answer !== 'yes' || answer !== 'no') {
       console.log("Please answer with 'yes' or 'no'.");
     }
-  } while (answer !== "yes" && answer !== "no");
-  return answer === "yes" ? true : false;
+  } while (answer !== 'yes' && answer !== 'no');
+  return answer === 'yes';
 };
 
 const startGamePrime = () => {
@@ -48,12 +48,12 @@ const startGamePrime = () => {
     const answerUser = getAnswerUser(number);
     const result = isCorrectAnswer(answerRight, answerUser);
     if (result) {
-      console.log("Correct!");
+      console.log('Correct!');
     } else {
       console.log(
         `'${answerUser}' is wrong answer ;(. Correct answer was '${
-          answerRight ? "yes" : "no"
-        }'.`
+          answerRight ? 'yes' : 'no'
+        }'.`,
       );
       flag = false;
       break;
