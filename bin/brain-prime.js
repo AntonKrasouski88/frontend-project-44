@@ -1,73 +1,75 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
+import readlineSync from 'readline-sync'
 import {
   showGameGreeting,
   getNameUser,
   getRandomNumber,
   isCorrectAnswer,
-} from './utils.js';
+} from './utils.js'
 
 const isPrime = (num) => {
   if (num === 2) {
-    return true;
+    return true
   }
   if (num < 2 || num % 2 === 0) {
-    return false;
+    return false
   }
 
   for (let i = 2; i < Math.sqrt(num); i += 1) {
     if (num % i === 0) {
-      return false;
+      return false
     }
   }
 
-  return true;
-};
+  return true
+}
 
 const getAnswerUser = (num) => {
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  console.log(`Question: ${num}`);
-  let answer;
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".')
+  console.log(`Question: ${num}`)
+  let answer
   do {
-    answer = readlineSync.question('Your answer: ');
+    answer = readlineSync.question('Your answer: ')
     if (answer !== 'yes' || answer !== 'no') {
-      console.log("Please answer with 'yes' or 'no'.");
+      console.log('Please answer with \'yes\' or \'no\'.')
     }
-  } while (answer !== 'yes' && answer !== 'no');
-  return answer;
-};
+  } while (answer !== 'yes' && answer !== 'no')
+  return answer
+}
 
 const startGamePrime = () => {
-  const startRange = 1;
-  const endRange = 100;
-  let flag = true;
+  const startRange = 1
+  const endRange = 100
+  let flag = true
 
   for (let i = 0; i < 3; i += 1) {
-    const number = getRandomNumber(startRange, endRange);
-    const answerRight = isPrime(number);
-    const answerUser = getAnswerUser(number);
-    const result = isCorrectAnswer(answerRight, answerUser === 'yes');
+    const number = getRandomNumber(startRange, endRange)
+    const answerRight = isPrime(number)
+    const answerUser = getAnswerUser(number)
+    const result = isCorrectAnswer(answerRight, answerUser === 'yes')
     if (result) {
-      console.log('Correct!');
-    } else {
+      console.log('Correct!')
+    }
+    else {
       console.log(
         `'${answerUser}' is wrong answer ;(. Correct answer was '${
           answerRight ? 'yes' : 'no'
         }'.`,
-      );
-      flag = false;
-      break;
+      )
+      flag = false
+      break
     }
   }
 
-  return flag;
-};
+  return flag
+}
 
-showGameGreeting();
-const nameUser = getNameUser();
-const resultGame = startGamePrime();
+showGameGreeting()
+const nameUser = getNameUser()
+const resultGame = startGamePrime()
 if (resultGame) {
-  console.log(`Congratulations, ${nameUser}!`);
-} else {
-  console.log(`Let's try again, ${nameUser}!`);
+  console.log(`Congratulations, ${nameUser}!`)
+}
+else {
+  console.log(`Let's try again, ${nameUser}!`)
 }
