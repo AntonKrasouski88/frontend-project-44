@@ -20,6 +20,9 @@ const getProgression = (startNum, step, length) => {
 const hideNumber = (arrNum, position) => {
   const copyArr = [...arrNum];
   copyArr[position] = '..';
+  console.log(copyArr);
+  console.log(arrNum);
+  console.log(position);
   return copyArr;
 };
 
@@ -44,7 +47,7 @@ const startGameProgression = () => {
     const startNumber = getRandomNumber(1, 100);
     const step = getRandomNumber(1, 10);
     const progressionLength = 10;
-    const positionHideElem = getRandomNumber(1, progressionLength);
+    const positionHideElem = getRandomNumber(0, progressionLength - 1);
     const progressionNumbers = getProgression(
       startNumber,
       step,
