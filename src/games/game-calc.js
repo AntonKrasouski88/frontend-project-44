@@ -37,8 +37,8 @@ const startGameCalculate = () => {
     const symbol = getSymbol(symbolsArr)
     const answerRight = calculateNumbers(firstNumber, secondNumber, symbol)
     const userAnswer = getAnswer(firstNumber, secondNumber, symbol)
-    const correctAnswer = isCorrectAnswer(answerRight, userAnswer)
-    flag = showRoundResultNum(correctAnswer, answerRight, userAnswer)
+    const correctAnswer = isCorrectAnswer(userAnswer, answerRight)
+    flag = showRoundResultNum(correctAnswer, userAnswer, answerRight)
     if (!flag) {
       break
     }
