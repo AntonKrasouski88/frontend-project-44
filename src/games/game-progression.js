@@ -1,5 +1,6 @@
 import readlineSync from 'readline-sync'
 import {
+  checkAnswerNumber,
   getRandomNumber,
   isCorrectAnswer,
 } from './utils.js'
@@ -24,13 +25,7 @@ const getAnswerUser = (arrNum, position) => {
   const progression = hideNumber(arrNum, position)
   console.log('What number is missing in the progression?')
   console.log(`Question: ${progression.join(' ')}`)
-  let answer
-  do {
-    answer = readlineSync.question('Your answer: ')
-    if (answer.length === 0 || Number.isNaN(Number(answer))) {
-      console.log('Please answer with a number')
-    }
-  } while (answer.length === 0 || Number.isNaN(Number(answer)))
+  const answer = checkAnswerNumber()
   return Number(answer)
 }
 

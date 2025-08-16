@@ -2,6 +2,7 @@ import readlineSync from 'readline-sync'
 import {
   getRandomNumber,
   isCorrectAnswer,
+  checkAnswerNumber,
 } from './utils.js'
 
 const getListDivisors = (num) => {
@@ -31,13 +32,7 @@ const getMinDivisors = (arrDivisors1, arrDivisors2) => {
 const getAnswerUser = (num1, num2) => {
   console.log('Find the greatest common divisor of given numbers.')
   console.log(`Question: ${num1} ${num2}`)
-  let answer
-  do {
-    answer = readlineSync.question('Your answer: ')
-    if (answer.length === 0 || Number.isNaN(Number(answer))) {
-      console.log('Please answer with a number')
-    }
-  } while (answer.length === 0 || Number.isNaN(Number(answer)))
+  const answer = checkAnswerNumber()
   return Number(answer)
 }
 

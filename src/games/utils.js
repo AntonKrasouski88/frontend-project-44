@@ -25,3 +25,16 @@ export const showResultGame = (result, name) => {
     console.log(`Let's try again, ${name}!`)
   }
 }
+
+export const checkAnswerNumber = () => {
+  let answer
+  do {
+    answer = readlineSync.question('Your answer: ')
+    if (answer.length === 0 || Number.isNaN(Number(answer))) {
+      console.log('Please answer with a number')
+    }
+    else {
+      return answer
+    }
+  } while (answer.length === 0 || Number.isNaN(Number(answer)))
+}
