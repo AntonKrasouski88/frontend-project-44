@@ -16,3 +16,12 @@ export const getRandomNumber = (start, end) => {
 }
 
 export const isCorrectAnswer = (answer, even) => answer === even
+
+export const showResultGame = (result, name) => {
+  if (result) {
+    console.log(`Congratulations, ${name}!`)
+  }
+  else {
+    console.log(`Let's try again, ${name}!`)
+  }
+}
