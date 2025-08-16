@@ -14,18 +14,15 @@ const getListDivisors = (num) => {
   return arrDivisors
 }
 
-const getMinDivisors = (arrDivisors1, arrDivisors2) => {
+const getMaxDivisors = (arrDivisors1, arrDivisors2) => {
   const divisors = arrDivisors1.reduce((acc, divisor) => {
-    if (arrDivisors2.includes(divisor) && divisor !== 1) {
-      acc.push(divisor)
+    if (arrDivisors2.includes(divisor) && acc <= divisor) {
+      acc = divisor
     }
     return acc
-  }, [])
-  if (divisors.length !== 0) {
-    return divisors[0]
-  }
+  }, 1)
 
-  return 1
+  return divisors
 }
 
 const getAnswerUser = (num1, num2) => {
@@ -45,7 +42,7 @@ const startGameNod = () => {
     const secondNumber = getRandomNumber(startRange, endRange)
     const listDivisorsFirstNum = getListDivisors(firstNumber)
     const listDivisorsSecondNum = getListDivisors(secondNumber)
-    const minDivisor = getMinDivisors(
+    const minDivisor = getMaxDivisors(
       listDivisorsFirstNum,
       listDivisorsSecondNum,
     )
