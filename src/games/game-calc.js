@@ -43,6 +43,7 @@ const startGameCalculate = () => {
       break
     }
   }
+  return flag
 }
 
 export default startGameCalculate
