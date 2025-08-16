@@ -5,7 +5,7 @@ import {
   getNameUser,
   getRandomNumber,
   isCorrectAnswer,
-} from './utils.js'
+} from '../src/games/utils.js'
 
 const isPrime = (num) => {
   if (num === 2) {
