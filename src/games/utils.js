@@ -38,3 +38,16 @@ export const checkAnswerNumber = () => {
     }
   } while (answer.length === 0 || Number.isNaN(Number(answer)))
 }
+
+export const checkAnswerYesNo = () => {
+  let answer
+  do {
+    answer = readlineSync.question('Your answer: ')
+    if (answer !== 'yes' && answer !== 'no') {
+      console.log('Please answer with \'yes\' or \'no\'.')
+    }
+    else {
+      return answer
+    }
+  } while (answer !== 'yes' && answer !== 'no')
+}

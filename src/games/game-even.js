@@ -1,7 +1,7 @@
-import readlineSync from 'readline-sync'
 import {
   getRandomNumber,
   isCorrectAnswer,
+  checkAnswerYesNo,
 } from './utils.js'
 
 const isEvenNumber = num => num % 2 === 0
@@ -9,13 +9,7 @@ const isEvenNumber = num => num % 2 === 0
 const getAnswerUser = (num) => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".')
   console.log(`Question: ${num}`)
-  let answer
-  do {
-    answer = readlineSync.question('Your answer: ')
-    if (answer !== 'yes' && answer !== 'no') {
-      console.log('Please answer with \'yes\' or \'no\'')
-    }
-  } while (answer !== 'yes' && answer !== 'no')
+  const answer = checkAnswerYesNo()
   return answer === 'yes'
 }
 

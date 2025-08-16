@@ -1,5 +1,6 @@
 import readlineSync from 'readline-sync'
 import {
+  checkAnswerYesNo,
   getRandomNumber,
   isCorrectAnswer,
 } from './utils.js'
@@ -12,7 +13,7 @@ const isPrime = (num) => {
     return false
   }
 
-  for (let i = 2; i < Math.sqrt(num); i += 1) {
+  for (let i = 2; i <= Math.sqrt(num); i += 1) {
     if (num % i === 0) {
       return false
     }
@@ -24,13 +25,7 @@ const isPrime = (num) => {
 const getAnswerUser = (num) => {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".')
   console.log(`Question: ${num}`)
-  let answer
-  do {
-    answer = readlineSync.question('Your answer: ')
-    if (answer !== 'yes' || answer !== 'no') {
-      console.log('Please answer with \'yes\' or \'no\'.')
-    }
-  } while (answer !== 'yes' && answer !== 'no')
+  const answer = checkAnswerYesNo()
   return answer
 }
 
