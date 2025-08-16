@@ -2,6 +2,7 @@ import {
   checkAnswerYesNo,
   getRandomNumber,
   isCorrectAnswer,
+  showRoundResultBool,
 } from './utils.js'
 
 const isPrime = (num) => {
@@ -25,7 +26,7 @@ const getAnswerUser = (num) => {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".')
   console.log(`Question: ${num}`)
   const answer = checkAnswerYesNo()
-  return answer
+  return answer === 'yes'
 }
 
 const startGamePrime = () => {
@@ -37,17 +38,9 @@ const startGamePrime = () => {
     const number = getRandomNumber(startRange, endRange)
     const answerRight = isPrime(number)
     const answerUser = getAnswerUser(number)
-    const result = isCorrectAnswer(answerRight, answerUser === 'yes')
-    if (result) {
-      console.log('Correct!')
-    }
-    else {
-      console.log(
-        `'${answerUser}' is wrong answer ;(. Correct answer was '${
-          answerRight ? 'yes' : 'no'
-        }'.`,
-      )
-      flag = false
+    const result = isCorrectAnswer(answerUser, answerRight)
+    flag = showRoundResultBool(result, answerUser, answerRight)
+    if (!flag) {
       break
     }
   }

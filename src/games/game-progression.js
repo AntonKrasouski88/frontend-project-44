@@ -2,6 +2,7 @@ import {
   checkAnswerNumber,
   getRandomNumber,
   isCorrectAnswer,
+  showRoundResultNum,
 } from './utils.js'
 
 const getProgression = (startNum, step, length) => {
@@ -46,14 +47,8 @@ const startGameProgression = () => {
       userAnswer,
       progressionNumbers[positionHideElem],
     )
-    if (correctAnswer) {
-      console.log('Correct!')
-    }
-    else {
-      console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${progressionNumbers[positionHideElem]}'.`,
-      )
-      flag = false
+    flag = showRoundResultNum(correctAnswer, userAnswer, progressionNumbers[positionHideElem])
+    if (!flag) {
       break
     }
   }

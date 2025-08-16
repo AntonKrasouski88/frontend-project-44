@@ -2,6 +2,7 @@ import {
   getRandomNumber,
   isCorrectAnswer,
   checkAnswerNumber,
+  showRoundResultNum,
 } from './utils.js'
 
 const getListDivisors = (num) => {
@@ -42,24 +43,17 @@ const startGameNod = () => {
     const secondNumber = getRandomNumber(startRange, endRange)
     const listDivisorsFirstNum = getListDivisors(firstNumber)
     const listDivisorsSecondNum = getListDivisors(secondNumber)
-    const minDivisor = getMaxDivisors(
+    const maxDivisor = getMaxDivisors(
       listDivisorsFirstNum,
       listDivisorsSecondNum,
     )
     const userAnswer = getAnswerUser(firstNumber, secondNumber)
-    const correctAnswer = isCorrectAnswer(userAnswer, minDivisor)
-    if (correctAnswer) {
-      console.log('Correct!')
-    }
-    else {
-      console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${minDivisor}'.`,
-      )
-      flag = false
+    const correctAnswer = isCorrectAnswer(userAnswer, maxDivisor)
+    flag = showRoundResultNum(correctAnswer, userAnswer, maxDivisor)
+    if (!flag) {
       break
     }
   }
-
   return flag
 }
 

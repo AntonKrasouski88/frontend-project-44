@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync'
-import { getRandomNumber, isCorrectAnswer } from './utils.js'
+import { getRandomNumber, isCorrectAnswer, showRoundResultNum } from './utils.js'
 
 const symbolsArr = ['+', '-', '*']
 
@@ -38,20 +38,11 @@ const startGameCalculate = () => {
     const answerRight = calculateNumbers(firstNumber, secondNumber, symbol)
     const userAnswer = getAnswer(firstNumber, secondNumber, symbol)
     const correctAnswer = isCorrectAnswer(answerRight, userAnswer)
-
-    if (correctAnswer) {
-      console.log('Correct!')
-    }
-    else {
-      console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${answerRight}'.`,
-      )
-      flag = false
+    flag = showRoundResultNum(correctAnswer, answerRight, userAnswer)
+    if (!flag) {
       break
     }
   }
-
-  return flag
 }
 
 export default startGameCalculate

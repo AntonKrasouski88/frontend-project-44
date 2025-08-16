@@ -2,6 +2,7 @@ import {
   getRandomNumber,
   isCorrectAnswer,
   checkAnswerYesNo,
+  showRoundResultBool,
 } from './utils.js'
 
 const isEvenNumber = num => num % 2 === 0
@@ -23,17 +24,8 @@ const startGameEvenNumber = () => {
     const answerUser = getAnswerUser(randomNumber)
     const evenNumber = isEvenNumber(randomNumber)
     const correctAnswer = isCorrectAnswer(answerUser, evenNumber)
-
-    if (correctAnswer) {
-      console.log('Correct!')
-    }
-    else {
-      console.log(
-        `'${answerUser}' is wrong answer ;(. Correct answer was '${
-          evenNumber ? 'yes' : 'no'
-        }'.`,
-      )
-      flag = false
+    flag = showRoundResultBool(correctAnswer, answerUser, evenNumber)
+    if (!flag) {
       break
     }
   }

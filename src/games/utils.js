@@ -51,3 +51,31 @@ export const checkAnswerYesNo = () => {
     }
   } while (answer !== 'yes' && answer !== 'no')
 }
+
+export const showRoundResultBool = (result, answerUser, rightAnswer) => {
+  if (result) {
+    console.log('Correct!')
+    return true
+  }
+  else {
+    console.log(
+      `'${answerUser ? 'yes' : 'no'}' is wrong answer ;(. Correct answer was '${
+        rightAnswer ? 'yes' : 'no'
+      }'.`,
+    )
+    return false
+  }
+}
+
+export const showRoundResultNum = (result, answerUser, rightAnswer) => {
+  if (result) {
+    console.log('Correct!')
+    return true
+  }
+  else {
+    console.log(
+      `'${answerUser}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`,
+    )
+    return false
+  }
+}
