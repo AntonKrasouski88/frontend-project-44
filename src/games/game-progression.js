@@ -1,58 +1,29 @@
-import {
-  checkAnswerNumber,
-  getRandomNumber,
-  isCorrectAnswer,
-  showRoundResultNum,
-} from './utils.js'
+import { getRandomNumber, showRoundResult, getAnswerUserNumber } from './utils.js'
 
-const getProgression = (startNum, step, length) => {
-  const arrNumbers = []
-  let num = startNum
-  for (let i = 0; i < length; i += 1) {
-    arrNumbers.push(num)
-    num += step
+export const gameProgression = () => {
+  const startNumber = getRandomNumber(1, 100)
+  const step = getRandomNumber(1, 10)
+  const progressionLength = 10
+  const positionHideElem = getRandomNumber(0, progressionLength - 1)
+  const getProgression = (startNum, step, length) => {
+    const arrNumbers = []
+    let num = startNum
+    for (let i = 0; i < length; i += 1) {
+      arrNumbers.push(num)
+      num += step
+    }
+    return arrNumbers
   }
-  return arrNumbers
-}
-
-const hideNumber = (arrNum, position) => {
-  const copyArr = [...arrNum]
-  copyArr[position] = '..'
-  return copyArr
-}
-
-const getAnswerUser = (arrNum, position) => {
-  const progression = hideNumber(arrNum, position)
+  const hideNumber = (arrNum, position) => {
+    const copyArr = [...arrNum]
+    copyArr[position] = '..'
+    return copyArr
+  }
+  const progressionNumbers = getProgression(startNumber, step, progressionLength)
+  const progression = hideNumber(progressionNumbers, positionHideElem)
   console.log('What number is missing in the progression?')
   console.log(`Question: ${progression.join(' ')}`)
-  const answer = checkAnswerNumber()
-  return Number(answer)
+  const userAnswer = getAnswerUserNumber()
+  showRoundResult(userAnswer, String(progressionNumbers[positionHideElem]))
+  return userAnswer === `${progressionNumbers[positionHideElem]}`
 }
-
-const startGameProgression = () => {
-  let flag = true
-
-  for (let i = 0; i < 3; i += 1) {
-    const startNumber = getRandomNumber(1, 100)
-    const step = getRandomNumber(1, 10)
-    const progressionLength = 10
-    const positionHideElem = getRandomNumber(0, progressionLength - 1)
-    const progressionNumbers = getProgression(
-      startNumber,
-      step,
-      progressionLength,
-    )
-    const userAnswer = getAnswerUser(progressionNumbers, positionHideElem)
-    const correctAnswer = isCorrectAnswer(
-      userAnswer,
-      progressionNumbers[positionHideElem],
-    )
-    flag = showRoundResultNum(correctAnswer, userAnswer, progressionNumbers[positionHideElem])
-    if (!flag) {
-      break
-    }
-  }
-  return flag
-}
-
-export default startGameProgression

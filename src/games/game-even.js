@@ -1,36 +1,32 @@
 import {
-  getRandomNumber,
-  isCorrectAnswer,
-  checkAnswerYesNo,
-  showRoundResultBool,
-} from './utils.js'
+  getRandomNumber, showRoundResult, getAnswerUserYesNo } from './utils.js'
 
-const isEvenNumber = num => num % 2 === 0
-
-const getAnswerUser = (num) => {
-  console.log('Answer "yes" if the number is even, otherwise answer "no".')
-  console.log(`Question: ${num}`)
-  const answer = checkAnswerYesNo()
-  return answer === 'yes'
-}
-
-const startGameEvenNumber = () => {
+export const gameEven = () => {
   const startRange = 1
   const endRange = 100
-  let flag = true
-
-  for (let i = 0; i < 3; i += 1) {
-    const randomNumber = getRandomNumber(startRange, endRange)
-    const answerUser = getAnswerUser(randomNumber)
-    const evenNumber = isEvenNumber(randomNumber)
-    const correctAnswer = isCorrectAnswer(answerUser, evenNumber)
-    flag = showRoundResultBool(correctAnswer, answerUser, evenNumber)
-    if (!flag) {
-      break
+  const randomNumber = getRandomNumber(startRange, endRange)
+  const isEvenNumber = (num) => {
+    if (num < 2) {
+      return 'no'
     }
+    if (num === 2) {
+      return 'yes'
+    }
+    if (num % 2 === 0) {
+      return 'no'
+    }
+    const limit = Math.ceil(Math.sqrt(num))
+    for (let i = 3; i <= limit; i += 2) {
+      if (num % i === 0) {
+        return 'no'
+      }
+    }
+    return 'yes'
   }
-
-  return flag
+  const rightAnswer = isEvenNumber(randomNumber)
+  console.log('Answer "yes" if the number is even, otherwise answer "no".')
+  console.log(`Question: ${randomNumber}`)
+  const answerUser = getAnswerUserYesNo()
+  showRoundResult(answerUser, rightAnswer)
+  return answerUser === rightAnswer
 }
-
-export default startGameEvenNumber

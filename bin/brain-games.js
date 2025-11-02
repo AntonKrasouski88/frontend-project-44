@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { showGameGreeting, getNameUser } from '../src/games/utils.js'
+import readlineSync from 'readline-sync'
 
-showGameGreeting()
-getNameUser()
+console.log('Welcome to the Brain Games!')
+const name = readlineSync.question('May I have your name? ')
+console.log(`Hello, ${name}!`)

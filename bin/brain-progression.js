@@ -1,12 +1,5 @@
 #!/usr/bin/env node
-import {
-  showGameGreeting,
-  getNameUser,
-  showResultGame,
-} from '../src/games/utils.js'
-import startGameProgression from '../src/games/game-progression.js'
+import { startGame } from '../src/games/game.js'
+import { gameProgression } from '../src/games/game-progression.js'
 
-showGameGreeting()
-const nameUser = getNameUser()
-const resultGame = startGameProgression()
-showResultGame(resultGame, nameUser)
+startGame(gameProgression)

@@ -26,7 +26,7 @@ export const showResultGame = (result, name) => {
   }
 }
 
-export const checkAnswerNumber = () => {
+export const getAnswerUserNumber = () => {
   let answer
   do {
     answer = readlineSync.question('Your answer: ')
@@ -39,7 +39,7 @@ export const checkAnswerNumber = () => {
   } while (answer.length === 0 || Number.isNaN(Number(answer)))
 }
 
-export const checkAnswerYesNo = () => {
+export const getAnswerUserYesNo = () => {
   let answer
   do {
     answer = readlineSync.question('Your answer: ')
@@ -50,6 +50,18 @@ export const checkAnswerYesNo = () => {
       return answer
     }
   } while (answer !== 'yes' && answer !== 'no')
+}
+
+export const showRoundResult = (answerUser, rightAnswer) => {
+  if (answerUser === rightAnswer) {
+    console.log('Correct!')
+  }
+  else {
+    console.log(
+      `'${answerUser}' is wrong answer ;(. Correct answer was '${
+        rightAnswer}'.`,
+    )
+  }
 }
 
 export const showRoundResultBool = (result, answerUser, rightAnswer) => {

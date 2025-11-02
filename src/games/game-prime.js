@@ -1,51 +1,18 @@
 import {
-  checkAnswerYesNo,
+  getAnswerUserYesNo,
   getRandomNumber,
-  isCorrectAnswer,
-  showRoundResultBool,
+  showRoundResult,
 } from './utils.js'
 
-const isPrime = (num) => {
-  if (num === 2) {
-    return true
-  }
-  if (num < 2 || num % 2 === 0) {
-    return false
-  }
-
-  for (let i = 2; i <= Math.sqrt(num); i += 1) {
-    if (num % i === 0) {
-      return false
-    }
-  }
-
-  return true
-}
-
-const getAnswerUser = (num) => {
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".')
-  console.log(`Question: ${num}`)
-  const answer = checkAnswerYesNo()
-  return answer === 'yes'
-}
-
-const startGamePrime = () => {
+export const brain_prime = () => {
   const startRange = 1
   const endRange = 100
-  let flag = true
+  const number = getRandomNumber(startRange, endRange)
 
-  for (let i = 0; i < 3; i += 1) {
-    const number = getRandomNumber(startRange, endRange)
-    const answerRight = isPrime(number)
-    const answerUser = getAnswerUser(number)
-    const result = isCorrectAnswer(answerUser, answerRight)
-    flag = showRoundResultBool(result, answerUser, answerRight)
-    if (!flag) {
-      break
-    }
-  }
-
-  return flag
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".')
+  console.log(`Question: ${number}`)
+  const answerUser = getAnswerUserYesNo()
+  const rightAnswer = number % 2 === 0 ? 'yes' : 'no'
+  showRoundResult(answerUser, rightAnswer)
+  return answerUser === rightAnswer
 }
-
-export default startGamePrime
